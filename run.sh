@@ -4,3 +4,4 @@
 ./scripts/install-brew-packages.sh
 
 ./scripts/setup-vscodium.sh
+./scripts/setup-zsh.sh
