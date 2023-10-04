@@ -1,0 +1,48 @@
+- name: Setup Homebrew packages
+  hosts: localhost
+  become: false
+  gather_facts: false
+  vars:
+    brew_cask_packages:
+      - firefox
+      - iterm2
+    brew_packages:
+      - git
+      - tree
+      - zsh
+
+  tasks:
+    - name: Installing Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ brew_cask_packages }}"
+        state: present
+      register: result
+      until: result is successful
+
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: present
+      register: result
+      until: result is successful
+
+- name: Setup VSCodium
+  hosts: localhost
+  become: false
+  gather_facts: false
+  tasks:
+    - name: "Install VSCodium extensions"
+      ansible.builtin.shell: "codium --install-extension {{ item }}"
+      loop:
+        - bradlc.vscode-tailwindcss
+        - dbaeumer.vscode-eslint
+        - eamodio.gitlens
+        - esbenp.prettier-vscode
+        - formulahendry.auto-rename-tag
+        - ritwickdey.liveserver
+        - teabyii.ayu
+
+    - name: Copy settings.json
+      ansible.builtin.copy:
+        src: config/vscodium/settings.json
+        dest: $HOME/Library/Application Support/VSCodium/User/settings.json

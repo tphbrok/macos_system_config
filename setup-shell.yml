@@ -1,0 +1,34 @@
+- name: Setup shell
+  hosts: localhost
+  become: false
+  vars:
+    brew_cask_packages:
+      - firefox
+      - iterm2
+    brew_packages:
+      - git
+      - tree
+      - zsh
+
+  tasks:
+    - name: Installing Homebrew Cask Packages
+      homebrew_cask:
+        name: "{{ brew_cask_packages }}"
+        state: present
+      register: result
+      until: result is successful
+
+    - debug: var=result.stdout_lines
+
+    - name: Install Homebrew Packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: present
+      register: result
+      until: result is successful
+
+    - name: Upgrade Homebrew Packages
+      homebrew:
+        upgrade_all: true
+      register: result
+      until: result is successful
