@@ -1,11 +1,7 @@
-# macos_system_config
+# Automation of MacOS system installation/config
 
-A repository to contain all scripts, tools and configurations to automate the installation of my MacOS system
+_This is a work in progress_
 
 ## How to use
 
-1. Run the initialization script
-
-   ```
-   ./init.sh
-   ```
+All scripts (`./scripts/*.sh`) can be executed separately, and `./run.sh` executes them all. Scripts should not produce errors when ran again.
