@@ -181,6 +181,12 @@
         "options": {
           "full_name": "iterm2"
         }
+      },
+      "vscodium": {
+        "version": "1.82.2.23257",
+        "options": {
+          "full_name": "vscodium"
+        }
       }
     }
   },
