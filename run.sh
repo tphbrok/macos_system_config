@@ -5,3 +5,4 @@
 
 ./scripts/setup-vscodium.sh
 ./scripts/setup-zsh.sh
+./scripts/setup-nvm.sh
