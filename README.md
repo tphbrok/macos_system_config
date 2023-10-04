@@ -1,4 +1,4 @@
-# Automation of MacOS system installation/config
+# Automation of my personal MacOS system installation/config
 
 _This is a work in progress_
 
